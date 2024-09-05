@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import {
   ApiInternalServerErrorResponse,
   ApiOkResponse,
@@ -7,7 +7,7 @@ import {
 } from '@nestjs/swagger';
 import { InvestCreateRequestDto, InvestCreateResponseDto } from './dtos';
 import { InvestService } from './services';
-import { AuthGuard } from '@nestjs/passport';
+// import { AuthGuard } from '@nestjs/passport';
 
 @Controller({
   path: 'invest',
@@ -25,5 +25,15 @@ export class InvestController {
     @Body() investCreateRequestDto: InvestCreateRequestDto,
   ): Promise<InvestCreateResponseDto> {
     return this.investService.create(investCreateRequestDto);
+  }
+
+  @Get(':code')
+  findOne(@Param('code') code: string) {
+    return this.investService.findFinancialAssets({ code });
+  }
+
+  @Get()
+  findMany() {
+    return this.investService.listFinancialAssets();
   }
 }

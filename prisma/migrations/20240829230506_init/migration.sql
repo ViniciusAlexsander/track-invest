@@ -13,7 +13,9 @@ CREATE TABLE "FinancialAssets" (
     "code" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "type" TEXT NOT NULL,
-    "description" TEXT NOT NULL
+    "description" TEXT NOT NULL,
+    "userId" INTEGER NOT NULL,
+    CONSTRAINT "FinancialAssets_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable

@@ -21,6 +21,7 @@ model User {
   email String    @unique
   name  String
   picture String?
+  financialAssets FinancialAssets[]
 }
 
 model FinancialAssets {
@@ -29,6 +30,8 @@ model FinancialAssets {
   name  String
   type String
   description String
+  userId Int
+  user  User  @relation(fields: [userId], references: [id])
   AssetsBuy AssetsBuy[]
 }
 

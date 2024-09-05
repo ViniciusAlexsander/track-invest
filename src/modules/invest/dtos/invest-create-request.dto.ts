@@ -13,4 +13,6 @@ export class InvestCreateRequestDto {
     example: 'Banco do Brasil SA',
   })
   readonly name: string;
+  readonly description: string;
+  readonly type: string;
 }
