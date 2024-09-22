@@ -17,10 +17,13 @@ datasource db {
 
 model User {
   id    Int       @default(autoincrement()) @id
-  googleId String @unique
+  username String @unique
   email String    @unique
   name  String
   picture String?
+  password String
+  createdAt DateTime @default(now())
+  updatedAt DateTime?
   financialAssets FinancialAssets[]
 }
 

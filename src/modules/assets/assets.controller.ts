@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { AssetsCreateResponseDto } from './dtos';
+import { AssetsCreateResponseDto } from 'src/dtos/assets';
 import { AssetsService } from './services';
 
 @Controller({

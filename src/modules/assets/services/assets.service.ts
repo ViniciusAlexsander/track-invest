@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/modules/prisma/prisma.service';
-import { AssetsCreateResponseDto } from '../dtos/assets-create-response.dto';
-import { AssetsFindManyRequestDto } from '../dtos/assets-find-many-request.dto';
-import { AssetsFindManyResponseDto } from '../dtos/assets-find-many-response.dto';
-import { AssetsReportResponseDto } from '../dtos/assets-report-response.dto';
+import { AssetsCreateResponseDto } from 'src/dtos/assets/assets-create-response.dto';
+import { AssetsFindManyRequestDto } from 'src/dtos/assets/assets-find-many-request.dto';
+import { AssetsFindManyResponseDto } from 'src/dtos/assets/assets-find-many-response.dto';
+import { AssetsReportResponseDto } from 'src/dtos/assets/assets-report-response.dto';
 
 @Injectable()
 export class AssetsService {

@@ -5,7 +5,10 @@ import {
   ApiOperation,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { InvestCreateRequestDto, InvestCreateResponseDto } from './dtos';
+import {
+  InvestCreateRequestDto,
+  InvestCreateResponseDto,
+} from 'src/dtos/invest';
 import { InvestService } from './services';
 // import { AuthGuard } from '@nestjs/passport';
 
