@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Request } from '@nestjs/common';
 import {
   ApiInternalServerErrorResponse,
   ApiOkResponse,
@@ -26,17 +26,18 @@ export class InvestController {
   @Post('/create')
   create(
     @Body() investCreateRequestDto: InvestCreateRequestDto,
+    @Request() req,
   ): Promise<InvestCreateResponseDto> {
-    return this.investService.create(investCreateRequestDto);
+    return this.investService.create(investCreateRequestDto, req.user.sub);
   }
 
   @Get(':code')
-  findOne(@Param('code') code: string) {
-    return this.investService.findFinancialAssets({ code });
+  findOne(@Param('code') code: string, @Request() req) {
+    return this.investService.findFinancialAssets({ code }, req.user.sub);
   }
 
   @Get()
-  findMany() {
-    return this.investService.listFinancialAssets();
+  findMany(@Request() req) {
+    return this.investService.listFinancialAssets(req.user.sub);
   }
 }

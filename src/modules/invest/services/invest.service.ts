@@ -10,34 +10,35 @@ import { PrismaService } from 'src/modules/prisma/prisma.service';
 export class InvestService {
   constructor(private prisma: PrismaService) {}
 
-  async listFinancialAssets(): Promise<InvestFindManyResponseDto[]> {
+  async listFinancialAssets(
+    userId: number,
+  ): Promise<InvestFindManyResponseDto[]> {
     return this.prisma.financialAssets.findMany({
       where: {
-        userId: 1,
+        userId,
       },
     });
   }
 
-  async findFinancialAssets({
-    code,
-  }: InvestFindOneRequestDto): Promise<InvestFindOneResponseDto> {
+  async findFinancialAssets(
+    { code }: InvestFindOneRequestDto,
+    userId: number,
+  ): Promise<InvestFindOneResponseDto> {
     return this.prisma.financialAssets.findUnique({
       where: {
         code,
-        userId: 1,
+        userId,
       },
     });
   }
 
-  public async create({
-    code,
-    name,
-    description,
-    type,
-  }: InvestCreateRequestDto): Promise<InvestCreateResponseDto> {
+  public async create(
+    { code, name, description, type }: InvestCreateRequestDto,
+    userId: number,
+  ): Promise<InvestCreateResponseDto> {
     return this.prisma.financialAssets.create({
       data: {
-        userId: 1,
+        userId,
         code,
         name,
         description,
